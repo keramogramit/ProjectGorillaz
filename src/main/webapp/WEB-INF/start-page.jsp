@@ -1,8 +1,13 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="head.jsp"%>
+
+<html>
+<head>
+    <title>Start Game</title>
+</head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="list-user">List Users</a>
+<h1><%="Let's play in interest game!"%></h1>
+<br>
+<a href="start-game">StartGame</a>
 </body>
+</html>
