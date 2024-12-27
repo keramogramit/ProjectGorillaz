@@ -14,16 +14,17 @@ public class InitServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(true);
+        HttpSession session = req.getSession();
         String user = req.getParameter("user");
 
         if (user != null && !user.isEmpty()) {
-            req.setAttribute("user", user);
-            req.setAttribute("step", 1);
-            req.setAttribute("count", 1);
-            req.setAttribute("gameCount", 0);
+            session.setAttribute("user", user);
+            session.setAttribute("step", "1");
+            session.setAttribute("count", "1");
+            session.setAttribute("gameCount", "0");
             req.getRequestDispatcher("/WEB-INF/quest-page.jsp").forward(req, resp);
-        } else {
+        }
+         else{
             // Логирование ошибки или перенаправление на страницу с ошибкой
             resp.sendRedirect(req.getContextPath() + "/error-page.jsp");
         }
