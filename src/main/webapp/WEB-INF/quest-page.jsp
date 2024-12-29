@@ -28,7 +28,7 @@
 <body>
 <p><%=property.getProperty("q." + session.getAttribute("step"))%></p>
 
-<form action="/read" method="post">
+<form action="/read" method="get">
     <p>Make your choice:</p>
     <label><input type="radio" name= "choice" value="1" checked="checked"> <%= property.getProperty("a." + session.getAttribute("step") + ".1")%> </label>
     <label><input type="radio" name= "choice" value="2"> <%= property.getProperty("a." + session.getAttribute("step") + ".2")%> </label> <br>
@@ -38,9 +38,9 @@
 
 <div class="footer">
     <%= "Statistics:"%> <br>
-    <%= "Your name: " + request.getAttribute("user") %><br>
+    <%= "Your name: " + session.getAttribute("user") %><br>
     <%= "Your IP: " + InetAddress.getLocalHost().getHostAddress() %><br>
-    <%= "Number of games played: " + request.getAttribute("gameCount")%>
+    <%= "Number of games played: " + session.getAttribute("gameCount")%>
 </div>
 </body>
 </html>

@@ -13,10 +13,9 @@ import java.io.IOException;
 public class ReadServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(true);
-        int currentStep = Integer.parseInt((String) session.getAttribute("step"));
-        session.setAttribute("step", currentStep + 1);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        session.setAttribute("step", (int) session.getAttribute("step") + 1);
         int value = Integer.parseInt(req.getParameter("choice"));
         session.setAttribute("choice", value);
         String page = "";
@@ -30,10 +29,11 @@ public class ReadServlet extends HttpServlet {
                 session.setAttribute("resultText", "def.3");
             } else if ((int) session.getAttribute("choice") == 1 && (int) session.getAttribute("step") == 4) {
                 session.setAttribute("resultText", "win.1");
-            } else {
-                page = "/WEB-INF/quest-page.jsp";
             }
-            resp.sendRedirect(page);
-        }
+            }else {
+                page = "WEB-INF/quest-page.jsp";
+            }
+        req.getRequestDispatcher(page).forward(req, resp);
+
     }
 }

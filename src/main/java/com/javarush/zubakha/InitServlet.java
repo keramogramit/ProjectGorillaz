@@ -19,9 +19,9 @@ public class InitServlet extends HttpServlet {
 
         if (user != null && !user.isEmpty()) {
             session.setAttribute("user", user);
-            session.setAttribute("step", "1");
-            session.setAttribute("count", "1");
-            session.setAttribute("gameCount", "0");
+            session.setAttribute("step", 1);
+            session.setAttribute("count", 1);
+            session.setAttribute("gameCount", 0);
             req.getRequestDispatcher("/WEB-INF/quest-page.jsp").forward(req, resp);
         }
          else{
