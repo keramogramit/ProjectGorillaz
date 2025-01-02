@@ -1,23 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
-
-<%@ page import="java.io.FileInputStream" %>
-<%@ page import="java.util.Properties" %>
-<%@ page import="java.io.IOException" %>
 <%@ page import="java.net.InetAddress" %>
-<%@ page import="java.io.File" %>
+<%@ page import="com.javarush.zubakha.PropertiesLoader" %>
+
 
 <%
-    FileInputStream fis;
-    Properties property = new Properties();
-    File propFile = new File("C:\\Users\\1\\IdeaProjects\\ProjectGorillaz\\src\\main\\resources\\config.properties");
-    try {
-        fis = new FileInputStream(propFile);
-        property.load(fis);
-    } catch (IOException e) {
-        System.err.println("ОШИБКА: Файл свойств отсутствует!");
-    }
+
+    PropertiesLoader loader = new PropertiesLoader("/config.properties");
+
+
+
 %>
 
 <html lang="ru" xml:lang="ru">
@@ -26,12 +18,12 @@
     <title>Quest</title>
 </head>
 <body>
-<p><%=property.getProperty("q." + session.getAttribute("step"))%></p>
+<p><%=loader.getProperty("q." + session.getAttribute("step"))%></p>
 
 <form action="/read" method="get">
     <p>Make your choice:</p>
-    <label><input type="radio" name= "choice" value="1" checked="checked"> <%= property.getProperty("a." + session.getAttribute("step") + ".1")%> </label>
-    <label><input type="radio" name= "choice" value="2"> <%= property.getProperty("a." + session.getAttribute("step") + ".2")%> </label> <br>
+    <label><input type="radio" name= "choice" value="1" checked="checked"> <%= loader.getProperty("a." + session.getAttribute("step") + ".1")%> </label>
+    <label><input type="radio" name= "choice" value="2"> <%= loader.getProperty("a." + session.getAttribute("step") + ".2")%> </label> <br>
     <button class= "button" type="submit">Confirm</button>
 
 </form>

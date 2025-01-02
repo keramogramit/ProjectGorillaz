@@ -1,16 +1,7 @@
-<%@ page import="java.io.FileInputStream" %>
-<%@ page import="java.util.Properties" %>
-<%@ page import="java.io.IOException" %>
 
-<%FileInputStream fis;
-    Properties property = new Properties();
-    try {
+<%@ page import="com.javarush.zubakha.PropertiesLoader" %>
 
-        fis = new FileInputStream("C:\\Users\\1\\IdeaProjects\\ProjectGorillaz\\src\\main\\resources\\config.properties");
-        property.load(fis);
-    } catch (IOException e) {
-        System.err.println("ОШИБКА: Файл свойств отсуствует!");
-    }%>
+<%PropertiesLoader loader = new PropertiesLoader("/config.properties");%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,7 +10,7 @@
 </head>
 <body>
 <p>
-    <%=property.getProperty((String) session.getAttribute("resultText"))%>
+    <%=loader.getProperty((String) session.getAttribute("resultText"))%>
 </p>
 <p>
 <form action="/restart">
