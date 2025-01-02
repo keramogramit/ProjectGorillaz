@@ -25,8 +25,7 @@ public class InitServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/quest-page.jsp").forward(req, resp);
         }
          else{
-            // Логирование ошибки или перенаправление на страницу с ошибкой
-            resp.sendRedirect(req.getContextPath() + "/error-page.jsp");
+            resp.sendRedirect(req.getContextPath() + "enter username");
         }
     }
 }
