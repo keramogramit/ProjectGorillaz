@@ -33,7 +33,7 @@ public class StartServletTest {
     }
 
     @Test
-    public void shouldOpenIndexPage() throws ServletException, IOException {
+    public void shouldOpenStartPage() throws ServletException, IOException {
         when(req.getRequestDispatcher("/WEB-INF/start-page.jsp")).thenReturn(dispatcher);
 
         startServlet.doGet(req, resp);

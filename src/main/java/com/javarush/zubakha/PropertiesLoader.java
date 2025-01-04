@@ -19,7 +19,7 @@ public class PropertiesLoader {
         try (InputStream fis = PropertiesLoader.class.getResourceAsStream(filePath)) {
             properties.load(fis);
         } catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсутствует! Путь: " );
+            System.err.println("ERROR: Properties file missing! Path:" );
             e.printStackTrace();
         }
     }
