@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoader {
-    private Properties properties;
+    private final Properties properties;
 
     public PropertiesLoader(String filePath) {
         properties = new Properties();

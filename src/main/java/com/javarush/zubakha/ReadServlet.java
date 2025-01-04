@@ -12,23 +12,23 @@ import java.io.IOException;
 
 @WebServlet(value = "/read")
 public class ReadServlet extends HttpServlet {
-
+    public String page;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.setAttribute("step", (int) session.getAttribute("step") + 1);
+        int valueStep = (Integer) session.getAttribute("step") + 1;
+        session.setAttribute("step", valueStep);
         int value = Integer.parseInt(req.getParameter("choice"));
         session.setAttribute("choice", value);
-        String page = "";
-        if (value == 2 || (int) session.getAttribute("step") == 4) {
+        if (value == 2 || valueStep == 4) {
             page = "/WEB-INF/result-page.jsp";
-            if ((int) session.getAttribute("choice") == 2 && (int) session.getAttribute("step") == 2) {
+            if (value == 2 && valueStep == 2) {
                 session.setAttribute("resultText", "def.1");
-            } else if ((int) session.getAttribute("choice") == 2 && (int) session.getAttribute("step") == 3) {
+            } else if (value == 2 && valueStep == 3) {
                 session.setAttribute("resultText", "def.2");
-            } else if ((int) session.getAttribute("choice") == 2 && (int) session.getAttribute("step") == 4) {
+            } else if (value == 2 && valueStep == 4) {
                 session.setAttribute("resultText", "def.3");
-            } else if ((int) session.getAttribute("choice") == 1 && (int) session.getAttribute("step") == 4) {
+            } else if (value == 1) {
                 session.setAttribute("resultText", "win.1");
             }
             }else {
