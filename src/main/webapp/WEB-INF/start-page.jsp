@@ -1,17 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String requestURL = request.getRequestURL().toString();
-  System.out.println("Запрос на URL: " + requestURL);
-%>
+
 <html>
 
 <head>
-  <link rel="stylesheet" href="/main.css" type="text/css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/main.css" type="text/css">
   <title>Acquaintance</title>
 </head>
 
 <body>
-<p>Вы пришли по следующему адресу: <%= requestURL %></p>
 <h1> Prologue </h1>
 <p>
   You are standing in the spaceport and ready to board <br>

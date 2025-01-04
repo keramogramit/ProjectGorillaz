@@ -1,5 +1,7 @@
 package com.javarush.zubakha;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +9,7 @@ import java.util.Properties;
 
 public class PropertiesLoader {
     private final Properties properties;
+    private static final Logger logger = LoggerFactory.getLogger(PropertiesLoader.class);
 
     public PropertiesLoader(String filePath) {
         properties = new Properties();
@@ -15,12 +18,10 @@ public class PropertiesLoader {
 
     private void loadProperties(String filePath) {
 
-
         try (InputStream fis = PropertiesLoader.class.getResourceAsStream(filePath)) {
             properties.load(fis);
         } catch (IOException e) {
-            System.err.println("ERROR: Properties file missing! Path:" );
-            e.printStackTrace();
+            logger.debug("ERROR: Properties file missing!", e);
         }
     }
 
